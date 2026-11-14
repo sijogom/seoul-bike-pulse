@@ -1,0 +1,20 @@
+{
+  "Name": "bikepulse-dev-curated-crawler",
+  "Role": "arn:aws:iam::AWS_ACCOUNT_ID:role/bikepulse-dev-glue-crawler-role",
+  "DatabaseName": "bikepulse_dev",
+  "Description": "Curated Seoul Bike Parquet crawler",
+  "Targets": {
+    "S3Targets": [
+      {
+        "Path": "s3://BIKEPULSE_BUCKET/curated/dataset=seoul-bike/"
+      }
+    ]
+  },
+  "RecrawlPolicy": {
+    "RecrawlBehavior": "CRAWL_EVERYTHING"
+  },
+  "SchemaChangePolicy": {
+    "UpdateBehavior": "UPDATE_IN_DATABASE",
+    "DeleteBehavior": "LOG"
+  }
+}

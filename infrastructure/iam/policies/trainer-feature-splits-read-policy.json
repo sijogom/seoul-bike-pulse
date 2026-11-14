@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadFeatureAndSplitArtifacts",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::BIKEPULSE_BUCKET/features/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/splits/*"
+      ]
+    }
+  ]
+}

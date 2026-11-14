@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListDataBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::BIKEPULSE_BUCKET"
+      ]
+    },
+    {
+      "Sid": "ReadData",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::BIKEPULSE_BUCKET/raw/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/curated/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/features/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/splits/*"
+      ]
+    },
+    {
+      "Sid": "WriteProcessedData",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::BIKEPULSE_BUCKET/curated/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/features/*",
+        "arn:aws:s3:::BIKEPULSE_BUCKET/splits/*"
+      ]
+    }
+  ]
+}

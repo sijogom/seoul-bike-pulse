@@ -1,0 +1,11 @@
+{
+  "level": "ALL",
+  "includeExecutionData": false,
+  "destinations": [
+    {
+      "cloudWatchLogsLogGroup": {
+        "logGroupArn": "arn:aws:logs:ap-northeast-2:AWS_ACCOUNT_ID:log-group:/aws/vendedlogs/states/bikepulse-dev-data-pipeline:*"
+      }
+    }
+  ]
+}

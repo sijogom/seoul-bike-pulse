@@ -1,0 +1,45 @@
+{
+  "family": "bikepulse-dev-trainer-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "2048",
+  "memory": "4096",
+  "executionRoleArn": "arn:aws:iam::AWS_ACCOUNT_ID:role/bikepulse-dev-ecs-execution-role",
+  "taskRoleArn": "arn:aws:iam::AWS_ACCOUNT_ID:role/bikepulse-dev-trainer-task-role",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "containerDefinitions": [
+    {
+      "name": "trainer",
+      "image": "AWS_ACCOUNT_ID.dkr.ecr.ap-northeast-2.amazonaws.com/bikepulse/trainer:n001",
+      "essential": true,
+      "environment": [
+        {
+          "name": "BIKEPULSE_BUCKET",
+          "value": "BIKEPULSE_BUCKET"
+        },
+        {
+          "name": "AWS_DEFAULT_REGION",
+          "value": "ap-northeast-2"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/bikepulse-dev/trainer",
+          "awslogs-region": "ap-northeast-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "command": [
+        "python",
+        "-u",
+        "/app/xgboost_worker.py"
+      ]
+    }
+  ]
+}
